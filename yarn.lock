@@ -3862,6 +3862,7 @@ __metadata:
     antd: ^4.16.13
     dayjs: ^1.10.7
     eslint-config-react-app: ^6.0.0
+    moment: ^2.29.1
     prettier: ^2.4.1
     rc-picker: ^2.5.19
     rc-util: ^5.15.0
@@ -10077,7 +10078,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.24.0, moment@npm:^2.25.3":
+"moment@npm:^2.24.0, moment@npm:^2.25.3, moment@npm:^2.29.1":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e

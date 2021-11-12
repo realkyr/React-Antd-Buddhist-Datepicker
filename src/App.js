@@ -9,6 +9,7 @@ import 'moment/locale/th'
 
 import { DatePicker } from './components/DatePicker'
 import { MomentPicker } from './components/MomentPicker'
+import { RangePicker } from './components/RangePicker'
 
 import th from 'antd/es/locale/th_TH'
 import enUS from 'antd/es/locale/en_US'
@@ -34,7 +35,7 @@ const App = () => {
 
   const localeDay = JSON.parse(JSON.stringify(lang))
   const dayjsLang = { ...localeDay.Calendar.lang }
-  dayjsLang.yearFormat = dayjs.locale() === 'th' ? 'BBBB' : 'YYYY'
+  dayjsLang.yearFormat = moment.locale() === 'th' ? 'BBBB' : 'YYYY'
 
   localeDay.Calendar.lang = dayjsLang
   localeDay.DatePicker.lang = dayjsLang
@@ -66,6 +67,7 @@ const App = () => {
 
         <ConfigProvider locale={localeDay}>
           <MomentPicker onChange={onChange} format={formatDayJS} />
+          <RangePicker onChange={onChange} format={formatDayJS} />
         </ConfigProvider>
 
         <a

@@ -18,14 +18,17 @@ import './App.css'
 
 const App = () => {
   const [lang, setLang] = useState(enUS)
+  const [formatDayJS, setFormat] = useState(
+    lang.locale === 'en' ? 'YYYY-MM-DD' : 'BBBB-MM-DD'
+  )
 
   const changeLocale = e => {
     const localeValue = e.target.value
-    console.log(localeValue)
 
     moment.locale(localeValue.locale)
     dayjs.locale(localeValue.locale)
 
+    setFormat(localeValue.locale === 'en' ? 'YYYY-MM-DD' : 'BBBB-MM-DD')
     setLang(localeValue)
   }
 
@@ -35,6 +38,10 @@ const App = () => {
 
   localeDay.Calendar.lang = dayjsLang
   localeDay.DatePicker.lang = dayjsLang
+
+  const onChange = (e) => {
+    console.log(e)
+  }
 
   return (
     <div className="App">
@@ -52,13 +59,13 @@ const App = () => {
 
         <p>Try playing this DatePicker (DayJS)</p>
         <ConfigProvider locale={localeDay}>
-          <DatePicker />
+          <DatePicker onChange={onChange} format={formatDayJS} />
         </ConfigProvider>
 
         <p>Try playing this DatePicker (MomentJS)</p>
 
-        <ConfigProvider locale={lang}>
-          <MomentPicker />
+        <ConfigProvider locale={localeDay}>
+          <MomentPicker onChange={onChange} format={formatDayJS} />
         </ConfigProvider>
 
         <a

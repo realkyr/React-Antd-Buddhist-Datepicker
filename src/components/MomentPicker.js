@@ -2,8 +2,15 @@ import moment from 'moment'
 import generatePicker from 'antd/es/date-picker/generatePicker'
 import momentConfig from 'rc-picker/lib/generate/moment'
 
+const oldFormat = moment.prototype.format
+
+moment.prototype.format = function (format) {
+  const result = format.replace('BBBB', this._d.getFullYear() + 543)
+
+  return oldFormat.bind(this)(result)
+}
+
 moment.prototype.year = function (input) {
-  // console.log(moment.locale())
   const yearBias = moment.locale() === 'th' ? 543 : 0
   const annoYear = this._d.getFullYear()
 
